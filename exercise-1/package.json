@@ -1,0 +1,15 @@
+{
+    "name": "serverless-workshop-exercise-1",
+    "version": "1.0.0",
+    "repository": "https://github.com/Swizec/serverless-workshop-exercises/exercise-1",
+    "author": "Swizec Teller",
+    "license": "MIT",
+    "dependencies": {
+        "microbundle": "^0.12.4",
+        "typescript": "^4.0.3"
+    },
+    "scripts": {
+        "build": "npx tsc",
+        "deploy": "npm run build && sls deploy"
+    }
+}
