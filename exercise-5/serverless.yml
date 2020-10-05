@@ -3,21 +3,35 @@ service: serverless-workshop-exercise-5
 provider:
     name: aws
     runtime: nodejs12.x
-    stage: dev2
+    stage: dev
     apiGateway:
         binaryMediaTypes:
             - "*/*"
+    iamRoleStatements:
+        - Effect: "Allow"
+          Action:
+              - "s3:*"
+          Resource: "arn:aws:s3:::*/*"
 
 functions:
     take-screenshot:
         handler: dist/take-screenshot.handler
         memorysize: 2536
         timeout: 30
+        custom:
+            env-resources:
+                - ScreenshotsBucket
         events:
             - http:
                   path: take-screenshot
                   method: GET
                   cors: true
+
+resources:
+    - ${file(s3.yml)}
+
+plugins:
+    - serverless-resources-env
 
 package:
     exclude:

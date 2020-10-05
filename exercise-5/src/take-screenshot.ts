@@ -1,5 +1,7 @@
 import { getChrome } from "./utils";
 import fs from "fs";
+import util from "util";
+import { S3 } from "aws-sdk";
 
 export const handler = async () => {
     const browser = await getChrome();
@@ -23,25 +25,33 @@ export const handler = async () => {
         };
     }
 
-    console.log(boundingBox);
-
-    const imagePath = `/tmp/screenshot-${new Date().getTime()}.png`;
+    const screenshotName = `screenshot-${new Date().getTime()}.png`;
+    const imagePath = `/tmp/${screenshotName}`;
 
     await page.screenshot({
         path: imagePath,
         clip: boundingBox,
     });
 
-    const data = fs.readFileSync(imagePath).toString("base64");
+    const readFile = util.promisify(fs.readFile);
+    const buffer = await readFile(imagePath);
 
-    console.log(data);
+    // aws comes from importing aws-sdk
+    const s3 = new S3({
+        apiVersion: "2006-03-01",
+    });
+
+    const { Location } = await s3
+        .upload({
+            Bucket: process.env.CF_ScreenshotsBucket!,
+            Key: screenshotName,
+            Body: buffer,
+            ACL: "public-read",
+        })
+        .promise();
 
     return {
         statusCode: 200,
-        headers: {
-            "Content-Type": "image/png",
-        },
-        body: data,
-        isBase64Encoded: true,
+        body: Location,
     };
 };
