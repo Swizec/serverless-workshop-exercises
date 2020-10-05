@@ -1,0 +1,16 @@
+service: serverless-workshop-exercise-2
+
+provider:
+    name: aws
+    runtime: nodejs12.x
+
+functions:
+    hello:
+        handler: dist/hello.handler
+        events:
+            - http:
+                  path: hello
+                  method: GET
+                  cors: true
+
+    # add the happy-day function here
