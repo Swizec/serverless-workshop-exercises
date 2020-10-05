@@ -27,6 +27,13 @@ functions:
                   method: POST
                   cors: true
     # add getItem function here
+    getItem:
+        handler: dist/getItem.handler
+        events:
+            - http:
+                  path: get/{itemId}
+                  method: GET
+                  cors: true
 # define dynamodb here
 
 resources:
