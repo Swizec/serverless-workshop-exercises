@@ -5,6 +5,8 @@
     "author": "Swizec Teller",
     "license": "MIT",
     "dependencies": {
+        "@types/aws-sdk": "^2.7.0",
+        "aws-sdk": "^2.766.0",
         "microbundle": "^0.12.4",
         "serverless-resources-env": "^0.3.1",
         "simple-dynamodb": "^1.0.1",

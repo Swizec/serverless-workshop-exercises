@@ -19,6 +19,13 @@ provider:
 
 functions:
     # add updateItem function here
+    updateItem:
+        handler: dist/updateItem.handler
+        events:
+            - http:
+                  path: update/{itemId}
+                  method: POST
+                  cors: true
     # add getItem function here
 # define dynamodb here
 
