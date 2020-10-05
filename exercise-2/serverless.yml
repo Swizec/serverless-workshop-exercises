@@ -14,3 +14,14 @@ functions:
                   cors: true
 
     # add the happy-day function here
+    happy-day:
+        handler: dist/happy-day.handler
+        events:
+            - http:
+                  path: "{name}"
+                  method: GET
+                  cors: true
+            - http:
+                  path: "{name}"
+                  method: POST
+                  cors: true
