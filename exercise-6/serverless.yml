@@ -1,0 +1,11 @@
+service: serverless-workshop-exercise-6
+
+provider:
+    name: aws
+    runtime: nodejs12.x
+    # dynamodb permissions here
+
+functions:
+    # add updateItem function here
+    # add getItem function here
+# define dynamodb here
