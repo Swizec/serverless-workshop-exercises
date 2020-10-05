@@ -1,0 +1,24 @@
+service: serverless-workshop-exercise-5
+
+provider:
+    name: aws
+    runtime: nodejs12.x
+    stage: dev2
+    apiGateway:
+        binaryMediaTypes:
+            - "*/*"
+
+functions:
+    take-screenshot:
+        handler: dist/take-screenshot.handler
+        memorysize: 2536
+        timeout: 30
+        events:
+            - http:
+                  path: take-screenshot
+                  method: GET
+                  cors: true
+
+package:
+    exclude:
+        - node_modules/puppeteer/.local-chromium/**
