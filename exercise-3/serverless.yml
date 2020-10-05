@@ -1,4 +1,4 @@
-service: serverless-workshop-exercise-2
+service: serverless-workshop-exercise-3
 
 provider:
     name: aws
@@ -13,4 +13,4 @@ functions:
                   method: GET
                   cors: true
 
-    # add the happy-day function here
+    # add your sendsms function here

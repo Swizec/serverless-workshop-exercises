@@ -6,6 +6,7 @@
     "license": "MIT",
     "dependencies": {
         "microbundle": "^0.12.4",
+        "twilio": "^3.49.4",
         "typescript": "^4.0.3"
     },
     "scripts": {
