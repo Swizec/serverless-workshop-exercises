@@ -4,6 +4,9 @@ provider:
     name: aws
     runtime: nodejs12.x
     stage: dev2
+    apiGateway:
+        binaryMediaTypes:
+            - "*/*"
 
 functions:
     take-screenshot:

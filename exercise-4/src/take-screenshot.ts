@@ -1,4 +1,5 @@
 import { getChrome } from "./utils";
+import fs from "fs";
 
 export const handler = async () => {
     const browser = await getChrome();
@@ -12,10 +13,35 @@ export const handler = async () => {
         waitUntil: ["domcontentloaded", "networkidle2"],
     });
 
-    const h1value = await page.$eval("h1", (el) => el.innerHTML);
+    const element = await page.$("h1");
+    const boundingBox = await element?.boundingBox();
+
+    if (!boundingBox) {
+        return {
+            statusCode: 500,
+            body: "Error measuring body",
+        };
+    }
+
+    console.log(boundingBox);
+
+    const imagePath = `/tmp/screenshot-${new Date().getTime()}.png`;
+
+    await page.screenshot({
+        path: imagePath,
+        clip: boundingBox,
+    });
+
+    const data = fs.readFileSync(imagePath).toString("base64");
+
+    console.log(data);
 
     return {
         statusCode: 200,
-        body: h1value,
+        headers: {
+            "Content-Type": "image/png",
+        },
+        body: data,
+        isBase64Encoded: true,
     };
 };
