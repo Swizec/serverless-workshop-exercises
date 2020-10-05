@@ -1,4 +1,4 @@
-service: serverless-workshop-exercise-2
+service: serverless-workshop-exercise-3
 
 provider:
     name: aws
@@ -13,4 +13,12 @@ functions:
                   method: GET
                   cors: true
 
-    # add the happy-day function here
+    # add a sendSMS function here
+    # use POST
+    sendSMS:
+        handler: dist/send-sms.handler
+        events:
+            - http:
+                  path: sendsms
+                  method: POST
+                  cors: true
