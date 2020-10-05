@@ -1,0 +1,14 @@
+Resources:
+    ItemsTable:
+        Type: "AWS::DynamoDB::Table"
+        Properties:
+            AttributeDefinitions:
+                - AttributeName: itemId
+                  AttributeType: S
+            KeySchema:
+                - AttributeName: itemId
+                  KeyType: HASH
+            ProvisionedThroughput:
+                ReadCapacityUnits: 1
+                WriteCapacityUnits: 1
+            TableName: ${self:provider.environment.ITEMS_TABLE}
