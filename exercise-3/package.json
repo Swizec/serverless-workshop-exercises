@@ -14,6 +14,7 @@
         "deploy": "npm run build && sls deploy"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.63"
+        "@types/aws-lambda": "^8.10.63",
+        "serverless-dotenv-plugin": "^3.0.0"
     }
 }
