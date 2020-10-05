@@ -3,6 +3,11 @@ service: serverless-workshop-exercise-3
 provider:
     name: aws
     runtime: nodejs12.x
+    iamRoleStatements:
+        - Effect: "Allow"
+          Action:
+              - "secretsmanager:GetSecretValue"
+          Resource: "arn:aws:secretsmanager:${self:provider.region}:*"
 
 plugins:
     - serverless-dotenv-plugin
