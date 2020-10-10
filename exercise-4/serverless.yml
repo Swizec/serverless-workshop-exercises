@@ -22,3 +22,4 @@ functions:
 package:
     exclude:
         - node_modules/puppeteer/.local-chromium/**
+        - node_modules/typescript/**
