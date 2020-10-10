@@ -30,3 +30,7 @@ functions:
                   path: sendsms
                   method: POST
                   cors: true
+
+package:
+    exclude:
+        - node_modules/typescript/**
