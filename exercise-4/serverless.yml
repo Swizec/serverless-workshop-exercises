@@ -14,4 +14,8 @@ functions:
                   cors: true
 
     # add your take-screenshot function here
+
+package:
+    exclude:
+        - node_modules/typescript/**
 # add your package config here

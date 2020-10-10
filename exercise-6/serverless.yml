@@ -9,3 +9,7 @@ functions:
     # add updateItem function here
     # add getItem function here
 # define dynamodb here
+
+package:
+    exclude:
+        - node_modules/typescript/**
