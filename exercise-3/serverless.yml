@@ -14,3 +14,7 @@ functions:
                   cors: true
 
     # add your sendsms function here
+
+package:
+    exclude:
+        - node_modules/typescript/**

@@ -41,3 +41,7 @@ resources:
 
 plugin:
     - serverless-resources-env
+
+package:
+    exclude:
+        - node_modules/typescript/**

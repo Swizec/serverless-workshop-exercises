@@ -14,3 +14,7 @@ functions:
                   cors: true
 
     # add the happy-day function here
+
+package:
+    exclude:
+        - node_modules/typescript/**
