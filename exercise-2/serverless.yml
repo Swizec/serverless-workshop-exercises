@@ -25,3 +25,7 @@ functions:
                   path: "{name}"
                   method: POST
                   cors: true
+
+package:
+    exclude:
+        - node_modules/typescript/**

@@ -12,3 +12,7 @@ functions:
                   path: hello
                   method: GET
                   cors: true
+
+package:
+    exclude:
+        - node_modules/typescript/**
