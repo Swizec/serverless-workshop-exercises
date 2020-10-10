@@ -15,3 +15,7 @@ functions:
 
     # add your take-screenshot function here
 # add your package config here
+
+package:
+    exclude:
+        - node_modules/typescript/**
