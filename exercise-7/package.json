@@ -1,0 +1,24 @@
+{
+    "name": "serverless-workshop-exercise-1",
+    "version": "1.0.0",
+    "repository": "https://github.com/Swizec/serverless-workshop-exercises/exercise-1",
+    "author": "Swizec Teller",
+    "license": "MIT",
+    "dependencies": {
+        "@types/aws-sdk": "^2.7.0",
+        "aws-sdk": "^2.766.0",
+        "microbundle": "^0.12.4",
+        "serverless-resources-env": "^0.3.1",
+        "simple-dynamodb": "^1.0.1",
+        "typescript": "^4.0.3",
+        "uuid": "^8.3.1"
+    },
+    "scripts": {
+        "build": "npx tsc",
+        "deploy": "npm run build && sls deploy"
+    },
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.63",
+        "@types/uuid": "^8.3.0"
+    }
+}

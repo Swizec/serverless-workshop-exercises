@@ -1,0 +1,47 @@
+service: serverless-workshop-exercise-7
+
+provider:
+    name: aws
+    runtime: nodejs12.x
+    # dynamodb permissions here
+    environment:
+        UPVOTES_TABLE: ${self:service}-upvotes2-${self:provider.stage}
+    iamRoleStatements:
+        - Effect: Allow
+          Action:
+              - dynamodb:Query
+              - dynamodb:Scan
+              - dynamodb:GetItem
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.UPVOTES_TABLE}"
+
+functions:
+    # add updateItem function here
+    upvote:
+        handler: dist/upvote.handler
+        events:
+            - http:
+                  path: upvote/{itemId}
+                  method: POST
+                  cors: true
+    # add getItem function here
+    countVotes:
+        handler: dist/countVotes.handler
+        events:
+            - http:
+                  path: countvotes/{itemId}
+                  method: GET
+                  cors: true
+# define dynamodb here
+
+resources:
+    - ${file(dynamodb.yml)}
+
+plugin:
+    - serverless-resources-env
+
+package:
+    exclude:
+        - node_modules/typescript/**
